@@ -29,12 +29,14 @@ string hashPassword(const string& pwd) {
 
 int main() {
     vector<array<string, 3>> data(MAX_ENTRIES);
+    // Read from the file, if there is any data
     ifstream infile("/Users/ellefassler/Desktop/Elizabeth Fassler_AlgorithmAssignment/Password-Hash-Algorithm/data.txt");
     if (!infile) {
         cout << "Unable to open file: " << strerror(errno) << endl;
         exit(1);
     }
 
+    // Reading data from file
     string id, pwd, hash_pwd;
     int ctr = 0;
     while (infile >> id >> pwd >> hash_pwd && ctr < MAX_ENTRIES) {
@@ -44,6 +46,7 @@ int main() {
         ctr++;
     }
 
+    // User menu for account management
     int choice;
     cout << "ENTER YOUR CHOICE:" << endl;
     cout << "1. Create a New Account" << endl;
@@ -51,9 +54,11 @@ int main() {
     cout << "3. Change Password" << endl;
     cin >> choice;
 
+    // Start timing the operation
     auto start = chrono::high_resolution_clock::now();
 
     if (choice == 1) {
+        // Creating a new account
         cout << "Welcome! Enter Username: ";
         cin >> id;
         cout << "Enter Password: ";
@@ -63,6 +68,7 @@ int main() {
             data[ctr++] = {id, pwd, hash};
         }
     } else if (choice == 2) {
+        // Signing in to an existing account
         cout << "Enter Username: ";
         cin >> id;
         cout << "Enter Password: ";
@@ -81,6 +87,7 @@ int main() {
             cout << "Username or password is incorrect." << endl;
         }
     } else if (choice == 3) {
+        // Changing the password for an existing account
         cout << "Enter Username: ";
         cin >> id;
         cout << "Enter Current Password: ";
@@ -99,14 +106,17 @@ int main() {
         }
     }
 
+    // Stop timing the operation
     auto end = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
 
+    // Writing updated data back to the file
     ofstream out("/Users/ellefassler/Desktop/Elizabeth Fassler_AlgorithmAssignment/Password-Hash-Algorithm/data.txt");
     for (int i = 0; i < ctr; ++i) {
         out << data[i][0] << " " << data[i][1] << " " << data[i][2] << endl;
     }
 
+    // Displaying the time taken for the operation
     cout << "Operation Time: " << duration.count() << " microseconds" << endl;
 
     return 0;
