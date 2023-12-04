@@ -1,7 +1,7 @@
 An application that includes three password hashing programs and a dataset generator program. If you'd like to run each application, only run one as its own project at a time, don't open all files as a single project.
 
 ### Generate Datasets
-First, run the program to generate the datasets that you will use for the password hashing applications. This generates three different dataset files: data_100.txt, data_1000.txt, and data_10000.txt.
+First, run the program to generate the datasets that you will use for the password hashing applications. This generates three different dataset files: ```data_100.txt, data_1000.txt, and data_10000.txt```.
 
 When finished generating the dataset files, choose one and ```select all```, ```copy```, and then ```paste```, into one of the hashing password program ```data.txt``` files.
 
