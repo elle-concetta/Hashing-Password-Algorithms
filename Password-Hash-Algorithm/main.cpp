@@ -30,7 +30,7 @@ string hashPassword(const string& pwd) {
 int main() {
     vector<array<string, 3>> data(MAX_ENTRIES);
     // Read from the file, if there is any data
-    ifstream infile("/Users/ellefassler/Desktop/Elizabeth Fassler_AlgorithmAssignment/Password-Hash-Algorithm/data.txt");
+    ifstream infile("/usr/local/data.txt");
     if (!infile) {
         cout << "Unable to open file: " << strerror(errno) << endl;
         exit(1);
@@ -111,7 +111,7 @@ int main() {
     auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
 
     // Writing updated data back to the file
-    ofstream out("/Users/ellefassler/Desktop/Elizabeth Fassler_AlgorithmAssignment/Password-Hash-Algorithm/data.txt");
+    ofstream out("/usr/local/data.txt");
     for (int i = 0; i < ctr; ++i) {
         out << data[i][0] << " " << data[i][1] << " " << data[i][2] << endl;
     }
