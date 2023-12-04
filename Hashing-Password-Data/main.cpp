@@ -13,7 +13,7 @@ int main()
     string data [MAX_ENTRIES][3];
 
     // Read from the file, if there is any data
-    ifstream infile("/Users/ellefassler/Desktop/Hashing-Password-Data/data.txt");
+    ifstream infile("/usr/local/data.txt");
     if(!infile) {
         cout << "Unable to open file." << strerror(errno) << endl;
         exit(1);
@@ -119,7 +119,7 @@ int main()
     auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
 
     // Save all the data in the file
-    ofstream out("/Users/ellefassler/Desktop/Hashing-Password-Data/data.txt");
+    ofstream out("/usr/local/data.txt");
     for (int i = 0; i < ctr; ++i) {
         out << data[i][0] << " " << data[i][1] << " " << data[i][2] << endl;
     }
