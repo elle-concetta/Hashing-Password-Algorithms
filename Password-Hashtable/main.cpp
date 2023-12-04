@@ -15,7 +15,7 @@ struct UserInfo {
 int main() {
     unordered_map<string, UserInfo> userTable;
     // Read from the file, if there is any data
-    ifstream infile("/Users/ellefassler/Desktop/Hashing-Password-Data/data.txt");
+    ifstream infile("/usr/local/data.txt");
 
     if (!infile) {
         cout << "Unable to open file." << strerror(errno) << endl;
@@ -90,7 +90,7 @@ int main() {
     auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
 
     // Writing updated data back to the file
-    ofstream out("/Users/ellefassler/Desktop/Hashing-Password-Data/data.txt");
+    ofstream out("/usr/local/data.txt");
     for (const auto &pair : userTable) {
         out << pair.first << " " << pair.second.password << " " << pair.second.hashedPassword << endl;
     }
